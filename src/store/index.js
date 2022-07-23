@@ -16,7 +16,7 @@ export default createStore({
     setError(state, str) {
       state.error = str;
     },
-    logine(state, bool) {
+    setLogine(state, bool) {
       state.logied = bool;
     },
     setProfile(state, bool) {

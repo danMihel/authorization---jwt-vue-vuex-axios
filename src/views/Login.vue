@@ -10,9 +10,9 @@
         <input class="auth-card__input" v-model="password" type="password" placeholder="Пароль" />
         <div class="auth-card__aller"> {{ passwordError }}</div>
       </div>
-      <div class="auth-card__aller">{{ this.nonFieldErrors }}</div>
+      <div class="auth-card__aller">{{ nonFieldErrors }}</div>
       <button class="auth-card__button">
-      <span v-if="this.isLoade === true">Войти</span>
+      <span v-if="isLoade === true">Войти</span>
       <div v-else class="auth-card__spinner"></div>
       </button>
     </form>
@@ -52,7 +52,7 @@ export default {
       }).then(res => (
         localStorage.setItem('token', res.data.token),
         this.$store.commit('setUsername', res.data.user.username),
-        res.data.token.length > 3 ? (this.$store.commit('logine', true), this.$router.push('/user')) : null
+        res.data.token.length > 3 ? (this.$store.commit('setLogine', true), this.$router.push('/user')) : null
       )).catch(error => {
         !error.response.status ? this.nonFieldErrors = "Проверьте подключение к интернету" : null
         this.error = JSON.parse(error.response.request.responseText);

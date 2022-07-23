@@ -37,8 +37,8 @@ nav {
 
 .nav_item {
   font-weight: bold;
-  
 }
+
 .nav_item:hover {
     cursor: pointer;
     color: #2244d8;

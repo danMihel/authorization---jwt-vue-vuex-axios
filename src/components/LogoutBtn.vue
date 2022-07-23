@@ -1,6 +1,6 @@
 <template>
     <router-link v-if="this.$store.state.logied === true" to="/">
-        <button id="logout-button" @click="this.logOut()">Выйти</button>
+        <button class="logout-button" @click="this.logOut()">Выйти</button>
     </router-link>
 </template>
 <script>
@@ -9,14 +9,14 @@ export default {
     methods: {
         logOut() {
             localStorage.removeItem("token")
-            this.$store.commit('logine', true)
+            this.$store.commit('setLogine', true)
             console.log('token delete')
         }
     }
 }
 </script>
 <style>
-#logout-button {
+.logout-button {
     height: 46px;
     width: 300px;
     border: none;
@@ -28,12 +28,12 @@ export default {
 
 }
 
-#logout-button:hover {
+.logout-button:hover {
     background-color: #4864df;
     transition: 0.2s linear;
 }
 
-#logout-button:active {
+.logout-button:active {
     background-color: #8a8d99;
     border: #4f505228 solid 3px;
 }

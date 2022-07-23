@@ -1,11 +1,11 @@
 <template>
   <div v-if="$store.state.logied === true" class="user-profile">
-    <div v-if="$store.state.getProfile === true" >
+    <div v-if="$store.state.getProfile === true">
       <h2>Профиль</h2>
       <div class="user-profile__data">
-      <p> <strong>Пользователь:</strong>  {{ $store.state.userName }}</p>
-      <p> <strong>Имя:</strong> {{ $store.state.firstName }}</p>
-      <p> <strong>Фамилия:</strong> {{ $store.state.lastName }}</p>
+        <p> <strong>Пользователь:</strong> {{ $store.state.userName }}</p>
+        <p> <strong>Имя:</strong> {{ $store.state.firstName }}</p>
+        <p> <strong>Фамилия:</strong> {{ $store.state.lastName }}</p>
       </div>
       <LogoutBtn />
     </div>
@@ -20,33 +20,16 @@
   </div>
 </template>
 <script>
-import { mapActions, mapMutations } from 'vuex'
 import LogoutBtn from '@/components/LogoutBtn.vue';
 export default {
   name: 'User',
   components: {
     LogoutBtn
   },
-  methods: {
-    ...mapMutations({
-      logine: 'logine',
-      loadUser: 'loadUser',
-      setUsername: 'setUsername',
-      setFirstName: 'setFirstName',
-      setLastName: 'setLastName'
-    }),
-
-    ...mapActions({
-      logOut: 'logOut',
-      startUserLoading: 'startUserLoading',
-      getUser: 'getUser',
-    }),
-  },
   mounted() {
     console.log(this.$store.state.logied)
-    this.$store.state.logied === true ? this.getUser() : null;
+    this.$store.state.logied === true ? this.$store.dispatch('getUser') : null;
   },
-
 }
 </script>
 <style>
